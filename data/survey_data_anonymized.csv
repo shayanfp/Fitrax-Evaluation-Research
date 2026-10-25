@@ -1,0 +1,12 @@
+﻿Participant_ID,Gender,Gym_Training_Experience,Q1_Logged_Workout_Session_Prior_to_Survey,Q2_In_Workout_Set_And_Weight_Logging_Convenience_vs_Traditional_Methods,Q3_Smart_Rest_Timer_Utility_And_Workout_Pacing,Q4_AI_Assistant_Exercise_Alternatives_And_QnA_Satisfaction,Q5_Gamification_Motivational_Feedback_And_Sense_of_Achievement,Q6_Future_Intention_to_Use_Fitrax_as_Primary_Workout_Assistant,Q7_Suggested_Improvement_or_Feature_Change_EN,Q7_Suggested_Improvement_or_Feature_Change_FA,Survey_Completion_Time_Seconds
+P01,Male,Advanced (> 3 years),Yes,4,5,5,4,4,N/A,N/A,105
+P02,Male,Intermediate (1-3 years),Yes,5,5,5,5,4,N/A,N/A,204
+P03,Male,Beginner (< 1 year),Yes,4,3,3,4,3,Working with it on mobile is slightly cumbersome; it would be much better if the mobile UI was smoother and faster.,یک مقدار کار باهاش بر روی گوشی سخته اگه رابط کاربری آپ بهتر و سریعتر باشه خیلی خوب میشه,217
+P04,Female,Beginner (< 1 year),Yes,5,4,4,4,5,"Increase rest intervals between exercises for older users, as our operational speed is lower than younger users.",زمان بین تمرینات را برای ما که سنمون بالاتر است بیشتر کنید چون سرعت عملمون کمتر از جوانها است,2730
+P05,Male,Beginner (< 1 year),Yes,3,2,1,4,3,N/A,N/A,112
+P06,Female,Beginner (< 1 year),Yes,4,4,4,5,4,N/A,N/A,104
+P07,Male,Advanced (> 3 years),Yes,4,4,2,4,4,Provide automated workout routine generation using AI.,ارائه برنامه با هوش مصنوعی,106
+P08,Female,Intermediate (1-3 years),Yes,4,4,4,5,4,Suggesting a dedicated movement list specifically tailored for warm-up and cool-down routines would be useful.,پیشنهاد لیستی مربوط به حرکاتی که مخصوصا برای گرم کردن و سرد کردن هستند میتونه مفید باشه,317
+P09,Male,Advanced (> 3 years),Yes,3,4,3,4,4,Make the interface more user-friendly.,یوزر فرندلی تر بکنید,123
+P10,Male,Beginner (< 1 year),Yes,5,1,4,4,5,N/A,N/A,66
+P11,Female,Advanced (> 3 years),Yes,4,5,5,5,5,N/A,N/A,117

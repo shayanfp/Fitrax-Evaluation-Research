@@ -1,0 +1,9 @@
+metric_name,average_value,unit_or_format,sample_size_or_scope,description
+ai_vision_processing_time,31.67,seconds,N=26 production runs,"Mean end-to-end multimodal transcription latency across production logs (<=2 images)"
+intra_session_ai_latency,8.76,seconds,N=72 successful runs,"Mean latency for conversational in-workout exercise guidance and DSS queries"
+post_workout_feedback_latency,6.52,seconds,N=9 external user sessions,"Mean response latency for post-workout performance analysis and coaching feedback"
+plan_optimization_dss_latency,36.53,seconds,N=5 external user sessions,"Mean latency for dynamic plan reorganization and progressive overload scaling"
+exercises_per_workout,10.33,exercises/session,N=12 sessions (8 external users),"Mean number of exercises per completed routine (median: 11.5)"
+total_sets_per_workout,26.58,sets/session,N=12 sessions (8 external users),"Mean completed sets per logged workout routine (median: 30.0)"
+json_schema_compliance_rate,100,percent,All AI runs,"Structural compliance rate via two-layer sanitization and regex self-healing"
+completed_set_preservation_rate,100,percent,All DSS optimizations,"Rule compliance ensuring in-progress logged sets are strictly immutable during plan restructuring"

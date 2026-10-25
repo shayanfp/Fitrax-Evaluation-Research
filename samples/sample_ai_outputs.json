@@ -1,0 +1,177 @@
+[
+  {
+    "feature": "Vision Workout Importer",
+    "description": "Multimodal transcription of handwritten workout routines into structured session schemas.",
+    "injected_context_specification": {
+      "multimodal_inputs": "Base64-encoded image parts of the handwritten workout sheet",
+      "system_directives": "Date anchoring (current Gregorian/Jalali date), valid muscle tags taxonomy, and 5-branch exercise schema definitions (strength, superset, cardio, text_based_sets, simple)",
+      "target_schema": "Sections array (warmup, main, cooldown) with chronological sequence preservation"
+    },
+    "runtime_sample_input": {
+      "input_type": "Handwritten routine photo (Chest & Triceps)",
+      "extracted_tags": ["chest", "triceps"]
+    },
+    "output": {
+      "tags": ["chest", "triceps"],
+      "status": "draft",
+      "sections": {
+        "warmup": [
+          {
+            "name": "تردمیل (شیب‌دار)",
+            "type": "cardio",
+            "duration": 5,
+            "notes": "گرم‌کردن عمومی"
+          },
+          {
+            "name": "چرخش دست و مچ",
+            "type": "simple",
+            "notes": "20 تکرار جلو و عقب"
+          }
+        ],
+        "main": [
+          {
+            "name": "پرس بالاسینه دمبل",
+            "type": "strength",
+            "simpleData": {
+              "sets": 4,
+              "reps": "10-12",
+              "weight": 20,
+              "weightUnit": "kg"
+            },
+            "detailedSets": [
+              {"set": 1, "reps": "12", "weight": 20, "completed": false},
+              {"set": 2, "reps": "10", "weight": 22.5, "completed": false},
+              {"set": 3, "reps": "10", "weight": 22.5, "completed": false},
+              {"set": 4, "reps": "8", "weight": 25, "completed": false}
+            ],
+            "notes": "کنترل کامل فاز منفی"
+          },
+          {
+            "name": "دیپ پارالل + پشت بازو سیمکش طنابی",
+            "type": "superset",
+            "sets_count": 3,
+            "exercises": [
+              {
+                "name": "دیپ پارالل",
+                "reps": "10",
+                "weight": 0
+              },
+              {
+                "name": "پشت بازو طنابی",
+                "reps": "12",
+                "weight": 17.5
+              }
+            ]
+          }
+        ],
+        "cooldown": [
+          {
+            "name": "کشش سینه روی دیوار",
+            "type": "simple",
+            "notes": "2 ست 30 ثانیه"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "feature": "In-Workout Assistant",
+    "description": "Real-time, context-aware decision support for in-gym exercise modification and substitution.",
+    "injected_context_specification": {
+      "user_profile": "Biometrics and active health constraints (first_name, age, gender, weight, height, physical_issues, conditions_notes)",
+      "current_session": "Active session state including current date, start time, target muscle tags, session notes, and full sections breakdown with logged set details and completion flags (is_completed)",
+      "user_question": "Direct user query submitted during the workout"
+    },
+    "runtime_sample_input": {
+      "user_question": "زیربغل هالتر خم رو فهمیدم که اشتباه میزدم، به اندازه کافی خم نمیشدم. حالا امروز که میخوام برم باشگاه بنظرت چی بزنم بجاش؟ کلا چیزای خم دوست ندارم. مثلا H دستگاه خوبه؟ یه بازنگری کن روی روزهای pull من.",
+      "active_context_summary": "Pull routine in progress; user requests non-hinged, chest-supported alternative to Bent-Over Barbell Row"
+    },
+    "output": {
+      "response_text": "سلام! تصمیم خیلی هوشمندانه‌ای گرفتی. حرکت دستگاه اچ (H Machine Row یا زیربغل قایقی با تکیه‌گاه سینه) یک جایگزین فوق‌العاده برای زیربغل هالتر خمه.\n\nچند دلیل مهم برای این انتخاب:\n۱. تکیه‌گاه سینه باعث میشه فشار و خستگی از روی فیله کمر و همسترینگ کاملاً حذف بشه و دیگه نگران زاویه خم شدن نباشی.\n۲. می‌تونی با تمرکز ۱۰۰٪ عضلات پشتی بزرگ (لت) رو منقبض کنی و کتف‌ها رو عقب بکشی.\n\nبرای جلسه امروز، ۳ تا ۴ ست با ۱۰ تا ۱۲ تکرار متمرکز و کنترل‌شده بزن."
+    }
+  },
+  {
+    "feature": "Dynamic Plan Optimization (DSS)",
+    "description": "Algorithmic routine restructuring based on progressive overload, fatigue, and live session progress.",
+    "injected_context_specification": {
+      "user_profile": "Biometric parameters and orthopedic injury contraindications (physical_issues)",
+      "current_session": "Current session object containing locked completed sets (is_completed: true) and uncompleted movements",
+      "workout_history": "Complete performance records across the user's preceding 5 completed sessions (sets, weights, reps, tonnage trends, RPE ratings)",
+      "exercise_library": "Whitelisted verified exercise taxonomy for safe movement substitution",
+      "user_instructions": "Optional live constraint input (e.g. time limits, available gym equipment)"
+    },
+    "runtime_sample_input": {
+      "session_state": "Leg workout routine with completed warmup sets; progressive overload applied to subsequent main compound lifts",
+      "locked_status": "Exercises with is_completed: true are marked immutable (aiBadge: null); modified/added exercises receive aiBadge: improved/new"
+    },
+    "output": {
+      "sessionNotes": "سلام شایان جان! برای جلسه امروز یک حرکت فعال‌سازی به برنامه اضافه شد تا قبل از اسکات، عضلات همسترینگ و باسن کاملاً آماده باشند.",
+      "sections": {
+        "warmup": [
+          {
+            "id": 2632,
+            "name": "دوچرخه ثابت",
+            "type": "cardio",
+            "duration": 4,
+            "is_completed": true,
+            "aiBadge": null
+          },
+          {
+            "id": 2633,
+            "name": "اسکات TRX",
+            "type": "simple",
+            "notes": "2 ست 20 تکرار",
+            "is_completed": true,
+            "aiBadge": null
+          }
+        ],
+        "main": [
+          {
+            "id": 2634,
+            "name": "پل باسن هالتر",
+            "type": "strength",
+            "is_completed": false,
+            "simpleData": {
+              "sets": 3,
+              "reps": "12",
+              "weight": 30,
+              "weightUnit": "kg"
+            },
+            "aiBadge": "new",
+            "notes": "مکث ۱ ثانیه‌ای در اوج انقباض"
+          },
+          {
+            "id": 2635,
+            "name": "پرس پا دستگاه",
+            "type": "strength",
+            "is_completed": false,
+            "simpleData": {
+              "sets": 4,
+              "reps": "10-12",
+              "weight": 80,
+              "weightUnit": "kg"
+            },
+            "aiBadge": "improved",
+            "notes": "افزایش ملایم وزنه در ست‌های آخر"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "feature": "Post-Workout Feedback",
+    "description": "Post-session analytical debrief contextualized by full workout performance, user history, and qualitative notes.",
+    "injected_context_specification": {
+      "user_profile": "User profile data including first_name, age, biological sex, and chronic conditions",
+      "completed_session": "Full completed workout payload: all finished exercises with recorded set counts, weights, reps, session duration, user sessionNotes, perceived exertion rating (rating: 1-5), and qualitative feedback tags (feedback_tags)"
+    },
+    "runtime_sample_input": {
+      "user_first_name": "شایان",
+      "session_notes": "شروع تمارین بعد از یک ماه وقفه.",
+      "session_summary": "8 completed exercises across Back, Biceps, and Chest (Assisted Pull-ups, Lat Pulldowns, Dumbbell Presses)"
+    },
+    "output": {
+      "response_text": "دمت گرم شایان! بازگشتت به تمرین بعد از یک ماه وقفه، فوق‌العاده بود و یک جلسه عالی رو ثبت کردی! 🎉🏆\n\nعاشق اون تلاشت توی حرکت بارفیکس کمکی شدم! اینکه تونستی تعداد تکرارها رو توی ست‌های بعدی افزایش بدی، نشون میده که با تمام وجودت برگشتی و مصممی. این یعنی قدرت! 🔥\n\nمهم‌ترین نکته اینه که بعد از یک ماه استراحت، هوشمندانه تمرین کردی و به بدنت فشار بیش از حد نیاوردی. شروع دوباره همیشه سخت‌ترین قسمت کاره و تو به بهترین شکل انجامش دادی.\n\n💡 نکته برای جلسه بعدی: توی حرکت لت از جلو، موقع پایین کشیدن میله، سعی کن تصور کنی که داری آرنج‌هات رو به سمت جیب شلوارت می‌کشی، نه اینکه فقط با دستات میله رو بکشی. این تمرکز ساده، عضلات پشتت رو خیلی بهتر و دقیق‌تر درگیر می‌کنه.\n\nفوق‌العاده بودی! خوب ریکاوری کن، چون این فقط نقطه شروع دوباره است. منتظر جلسه بعدی‌ات هستم! 🚀"
+    }
+  }
+]
